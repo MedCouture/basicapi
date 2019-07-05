@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios');
 const controller = require('./controllers/controller');
-
+const exphbs = require('express-handlebars');
 
 const PORT = process.env.PORT || 3000;
 
@@ -15,6 +15,9 @@ app.use(express.static('public'));
 //Use body-parser for handling form submissions
 app.use(bodyParser.urlencoded({extended:true}));
 
+app.engine('handlebars',exphbs({defaultLayout:'main'}));
+
+app.set('view engine', 'handlebars');
 //Get app to use routes
 controller(app);
 

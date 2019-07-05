@@ -4,10 +4,18 @@ const axios = require('axios');
 
 
 module.exports = app => {
-    app.get('/', (req,res)=>{
+    app.get('/api', (req,res)=>{
         let data = {
-            name:'test'
+            name:'test',
+            age:1
         }
         res.json(data);
+    });
+    app.get('/', (req,res)=>{
+        let data = {
+            name:'test',
+            age:1
+        }
+        res.render('index', data);
     });
 };
